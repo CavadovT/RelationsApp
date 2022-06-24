@@ -25,7 +25,6 @@ namespace RelationsApp.Controllers
                 .ToList();
             List<Student>students=_context.Students
                 .Include(g=>g.Group)
-                .Where(g=>g.GroupId==g.Id)
                 .ToList();
             List<SocialAccount> socialAccounts = _context.SocialAccounts
                 .Include(sa=>sa.User)

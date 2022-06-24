@@ -16,7 +16,29 @@
 }
 </ul>
 
+<hr/>
 
+<ul>
+    @foreach (var student in Model.Students)
+   {
+       <li>
+        @student.Name
+        @student.Group.Name
+       </li>  
+       <hr/>
+   }
+</ul>
+<hr/>
+<ul>
+    @foreach (var sa in Model.SocialAccounts)
+   {
+       <li>
+        @sa.Facebook @sa.Instagram @sa.Vkontakt @sa.Twitter 
+        @sa.User.Name
+       </li>  
+       <hr/>
+   }
+</ul>
 
 
 
