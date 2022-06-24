@@ -1,0 +1,22 @@
+﻿@model HomeMV
+@{
+    ViewData["Title"] = "Index";
+
+}
+<ul>
+    @foreach (var books in Model.Books)
+{
+    <li>@books.Name
+    @foreach (var genre in books.BookGenres)
+    {
+        @genre.Genre.Name
+    }
+    </li>
+    <hr/>
+}
+</ul>
+
+
+
+
+
