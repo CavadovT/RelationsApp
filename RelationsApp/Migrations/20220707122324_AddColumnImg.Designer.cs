@@ -9,8 +9,8 @@ using RelationsApp.DAL;
 namespace RelationsApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220624200938_AddTables")]
-    partial class AddTables
+    [Migration("20220707122324_AddColumnImg")]
+    partial class AddColumnImg
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,6 @@ namespace RelationsApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ImgUrl")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -64,6 +61,26 @@ namespace RelationsApp.Migrations
                     b.HasIndex("GenreId");
 
                     b.ToTable("BookGenres");
+                });
+
+            modelBuilder.Entity("RelationsApp.Models.BookImg", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("bookImgs");
                 });
 
             modelBuilder.Entity("RelationsApp.Models.Genre", b =>
@@ -195,6 +212,15 @@ namespace RelationsApp.Migrations
                     b.HasOne("RelationsApp.Models.Genre", "Genre")
                         .WithMany("BookGenres")
                         .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RelationsApp.Models.BookImg", b =>
+                {
+                    b.HasOne("RelationsApp.Models.Book", "Book")
+                        .WithMany("BookImgs")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
