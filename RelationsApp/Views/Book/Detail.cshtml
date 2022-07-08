@@ -1,7 +1,37 @@
-﻿
+﻿@model BookVM
 @{
     ViewData["Title"] = "Detail";
 }
 
-<h1>Detail</h1>
+<div class="row">
+ <div class="card" style="width: 96vh; height:50%" >
+    @foreach (var item in Model.BookImgs)
+       {
+      <img style="width:18rem" class="card-img-top d-flex" src="~/img/@item.Img" alt="Card image cap">
+       
+       }
+   
+  <div class="card-body">
+    <h5 class="card-title">@Model.Book.Name</h5>
+    <p class="card-text"><strong>@Model.Book.Title</strong></p>
+    <p class="card-text">$<strong>@Model.Book.Price</strong></p>
+     <p class="card-text">Name of Authors
+        @foreach (var author in Model.BookAuthors)
+           {
+            <strong>@author.Author.FullName</strong>
+      
+           }
+     </p>
+      <p class="card-text">Name of Genres
+           @foreach (var author in Model.BookGenres)
+              {
+                <strong>@author.Genre.Name</strong>
+      
+              }
+      </p>
+  </div>
+
+  <a class="btn btn-primary" asp-action="index">Go To Back</a>
+</div>
+</div>
 

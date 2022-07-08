@@ -8,7 +8,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Book Table</h3>
-                           <a class="btn btn-warning" asp-action="create">Add Book</a>
+                           <a class="btn btn-warning" asp-action="Create">Add Book</a>
                             <div class="table-responsive">
                                 <table class="table text-wrap">
                                     <thead>
@@ -19,8 +19,8 @@
                                             <th class="border-top-0">Title</th>
                                             <th class="border-top-0">Price</th>
                                             <th class="border-top-0">Genres</th>
-                                            <th class="border-top-0">Settings</th>
-                                            
+                                            <th class="border-top-0">Authors</th>
+                                            <th class="border-top-0">Settings</th>  
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -43,12 +43,21 @@
                                             <td>@book.Name</td>
                                             <td>@book.Title</td>
                                             <td>@book.Price</td>
-                                            <td>
+                                            <td class="text-wrap">
                                             @foreach (var genre in Model.BookGenres)
                                             {
                                                 if (book.Id == genre.BookId)
                                                 {
                                                     @genre.Genre.Name<span>,</span>
+                                                }
+                                            }
+                                            </td>
+                                             <td class="text-wrap">
+                                            @foreach (var genre in Model.BookAuthors)
+                                            {
+                                                if (book.Id == genre.BookId)
+                                                {
+                                                    @genre.Author.FullName<span>,</span>
                                                 }
                                             }
                                             </td>

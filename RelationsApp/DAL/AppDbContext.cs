@@ -16,6 +16,8 @@ namespace RelationsApp.DAL
         public DbSet<Student> Students { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<SocialAccount> SocialAccounts { get; set; }
-        public DbSet<BookImg> bookImgs { get; set; }
+        public DbSet<BookImg> BookImgs { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<BookAuthor> BookAuthors { get; set; }
     }
 }

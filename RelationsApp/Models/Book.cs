@@ -9,7 +9,7 @@ namespace RelationsApp.Models
         public string Title { get; set; }
         public decimal Price { get; set; }
         public List<BookGenre> BookGenres { get; set; }
+        public List<BookAuthor> BookAuthors { get; set; }
         public List<BookImg> BookImgs { get; set; }
-
     }
 }

@@ -1,12 +1,13 @@
-﻿@*@model Book
+﻿@model BookVM
 
 @{
     ViewData["Title"] = "Create";
 }
 
 
+
 <div class="row">
-    <h1>Product</h1>
+    <h1>CreateBook</h1>
         <form method="post" enctype="multipart/form-data">
               <div class="form-group">
                  <label asp-for="Name" ></label>
@@ -21,25 +22,35 @@
               </div>
 
               <div class="form-group">
-                 <label asp-for="Count" ></label>
-                 <input asp-for="Count"  class="form-control"   placeholder="Enter Count">
-                 <span class="text-danger" asp-validation-for="Count"></span>
+                 <label asp-for="Title" ></label>
+                 <input asp-for="Title"  class="form-control"   placeholder="Enter Title">
+                 <span class="text-danger" asp-validation-for="Title"></span>
               </div>
 
-              <select asp-for="CategoryId" asp-items="@ViewBag.Categories" class="form-select" aria-label="Default select example">
+                  <select asp-for="AuthorIds" asp-items="@ViewBag.Authors" class="form-select" >
                  
-                  <option selected>Select the Category</option>
+                      <option selected>Select the Author</option>
              
-                </select>
+                    </select>
+                <span class="text-danger" asp-validation-for="AuthorIds"></span>
+
+
+                
+                  <select  asp-for="GenreIds"  class="form-select"  asp-items="@ViewBag.Genres"  >
+                 
+                      <option selected>Select the Genre</option>
+                 
+                    </select>
+                <span class="text-danger" asp-validation-for="GenreIds"></span>
+
 
                 <div class="form-group">
-                 <label asp-for="Photo" ></label>
-                 <input asp-for="Photo"  class="form-control"   placeholder="Choose Photo">
-                 <span class="text-danger" asp-validation-for="Photo"></span>
+                 <label asp-for="Photos" ></label>
+                 <input asp-for="Photos"  class="form-control"   placeholder="Choose Photo">
+                 <span class="text-danger" asp-validation-for="Photos"></span>
               </div>
 
               <button type="submit" class="btn btn-success">Submit</button>
              <a class="btn btn-dark" asp-action="Index">Go Back</a>
         </form>
 </div>
-*@
